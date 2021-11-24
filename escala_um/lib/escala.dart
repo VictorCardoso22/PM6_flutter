@@ -1,8 +1,10 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+import 'package:escala_um/calendario.dart';
 import 'package:escala_um/constants.dart';
 import 'package:escala_um/escala_m.dart';
 import 'package:escala_um/escala_web.dart';
+import 'package:escala_um/form_guarnicao.dart';
 import 'package:flutter/material.dart';
 
 class Escala extends StatefulWidget {
@@ -15,8 +17,6 @@ class Escala extends StatefulWidget {
 class _EscalaState extends State<Escala> {
   @override
   Widget build(BuildContext context) {
-    var largura = MediaQuery.of(context).size.width;
-    var altura = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         title: Row(
@@ -31,11 +31,86 @@ class _EscalaState extends State<Escala> {
       body: SafeArea(
         child: LayoutBuilder(builder: (context, constraint) {
           var larguratela = constraint.maxWidth;
-          if (larguratela < 600) {
-            return EscalaM();
-          } else {
-            return EscalaWeb();
-          }
+
+          return SingleChildScrollView(
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  // tebela
+                  Column(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.only(top: 20),
+                        child: Text(
+                          "titulo da GU",
+                          style: kHeadingTextStyle1,
+                        ),
+                      ),
+                      Container(
+                        child: Text(
+                          "Escala 24x72",
+                          style: kSubTextStyle,
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.all(16),
+                        child: Calendario(),
+                      ),
+                    ],
+                  ),
+                  // botões de ação
+                  Container(
+                    padding: EdgeInsets.all(20),
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Container(
+                            height: 40,
+                            margin: EdgeInsets.only(
+                              right: 20,
+                            ),
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                primary: Color(0xFF44bc9c), // background
+                                onPrimary: Color(0xFF333333), // foreground
+                              ),
+                              onPressed: () {},
+                              child: Text('ADICIONAR GRUPO',
+                                  style: kTitleTextStyle),
+                            ),
+                          ),
+                          Container(
+                            height: 40,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                primary: Color(0xFF44bc9c), // background
+                                onPrimary: Color(0xFF333333), // foreground
+                              ),
+                              onPressed: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (contex) {
+                                    return FormGuarnicao();
+                                  },
+                                );
+                              },
+                              child: Text('ADICIONAR GUARNIÇÃO',
+                                  style: kTitleTextStyle),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Container(
+                    child: larguratela < 600 ? EscalaM() : EscalaWeb(),
+                  )
+                ]),
+          );
         }),
       ),
     );

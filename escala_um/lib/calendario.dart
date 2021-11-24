@@ -1,3 +1,4 @@
+import 'package:escala_um/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
@@ -11,10 +12,26 @@ class Calendario extends StatefulWidget {
 class _CalendarioState extends State<Calendario> {
   @override
   Widget build(BuildContext context) {
-    return SfCalendar(
-      view: CalendarView.week,
-      firstDayOfWeek: 1,
-      dataSource: MeetingDataSource(getAppointments()),
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.all(
+          Radius.circular(5),
+        ),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: kShadowColor,
+            spreadRadius: 2,
+            blurRadius: 4,
+            offset: Offset(0, 3),
+          ),
+        ],
+      ),
+      child: SfCalendar(
+        view: CalendarView.week,
+        firstDayOfWeek: 1,
+        dataSource: MeetingDataSource(getAppointments()),
+      ),
     );
   }
 }
@@ -55,13 +72,13 @@ List<Appointment> getAppointments() {
       recurrenceRule: 'FREQ=DAILY;COUNT=7;INTERVAL=4;BYDAY=SU,SA',
       isAllDay: false));
 
-  meetings.add(Appointment(
-      startTime: DateTime(2021, 11, 04, 09, 00),
-      endTime: DateTime(2021, 11, 04, 10, 00),
-      subject: 'Grupo D2',
-      color: Colors.red,
-      recurrenceRule: 'FREQ=DAILY;COUNT=7;INTERVAL=4;BYDAY=SU,SA',
-      isAllDay: false));
+  // meetings.add(Appointment(
+  //     startTime: DateTime(2021, 11, 04, 09, 00),
+  //     endTime: DateTime(2021, 11, 04, 10, 00),
+  //     subject: 'Grupo D2',
+  //     color: Colors.red,
+  //     recurrenceRule: 'FREQ=DAILY;COUNT=7;INTERVAL=4;BYDAY=SU,SA',
+  //     isAllDay: false));
 
   return meetings;
 }
