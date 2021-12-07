@@ -29,7 +29,7 @@ class _CalendarioState extends State<Calendario> {
       ),
       child: SfCalendar(
         view: CalendarView.week,
-        firstDayOfWeek: 1,
+        // firstDayOfWeek: 1,
         dataSource: MeetingDataSource(getAppointments()),
       ),
     );
@@ -73,11 +73,11 @@ List<Appointment> getAppointments() {
       isAllDay: false));
 
   // meetings.add(Appointment(
-  //     startTime: DateTime(2021, 11, 04, 09, 00),
-  //     endTime: DateTime(2021, 11, 04, 10, 00),
-  //     subject: 'Grupo D2',
+  //     startTime: DateTime(2021, 12, 01, 09, 00),
+  //     endTime: DateTime(2021, 12, 01, 10, 00),
+  //     subject: 'Grupo E',
   //     color: Colors.red,
-  //     recurrenceRule: 'FREQ=DAILY;COUNT=7;INTERVAL=4;BYDAY=SU,SA',
+  //     recurrenceRule: 'FREQ=DAILY;COUNT=8;INTERVAL=4;BYDAY=SU,SA',
   //     isAllDay: false));
 
   return meetings;

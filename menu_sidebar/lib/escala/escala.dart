@@ -1,11 +1,11 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
-import 'package:escala_um/calendario.dart';
-import 'package:escala_um/constants.dart';
-import 'package:escala_um/escala_m.dart';
-import 'package:escala_um/escala_web.dart';
-import 'package:escala_um/form_guarnicao.dart';
 import 'package:flutter/material.dart';
+import 'package:menu_sidebar/escala/calendario.dart';
+import 'package:menu_sidebar/escala/constants.dart';
+import 'package:menu_sidebar/escala/escala_m.dart';
+import 'package:menu_sidebar/escala/escala_web.dart';
+import 'package:menu_sidebar/escala/form_guarnicao.dart';
 
 class Escala extends StatefulWidget {
   const Escala({Key? key}) : super(key: key);
@@ -15,19 +15,11 @@ class Escala extends StatefulWidget {
 }
 
 class _EscalaState extends State<Escala> {
+  final DateTime hoje = DateTime.now();
+  // final DateTime mes = hoje.day;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text("Escala de Serviço"),
-          ],
-        ),
-        backgroundColor: Color(0xFF328f95),
-      ),
       body: SafeArea(
         child: LayoutBuilder(builder: (context, constraint) {
           var larguratela = constraint.maxWidth;
@@ -55,7 +47,33 @@ class _EscalaState extends State<Escala> {
                       ),
                       Container(
                         padding: EdgeInsets.all(16),
-                        child: Calendario(),
+                        child: Column(
+                          children: [
+                            Container(
+                              width: constraint.maxWidth,
+                              height: 50,
+                              padding: EdgeInsets.all(16),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(5),
+                                ),
+                                color: Colors.lightBlue[100],
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: kShadowColor,
+                                    spreadRadius: 2,
+                                    blurRadius: 4,
+                                    offset: Offset(0, 3),
+                                  ),
+                                ],
+                              ),
+                              alignment: Alignment.center,
+                              child: Text(hoje.month.toString(),
+                                  style: kTitleTextStyle),
+                            ),
+                            Calendario(),
+                          ],
+                        ),
                       ),
                     ],
                   ),
