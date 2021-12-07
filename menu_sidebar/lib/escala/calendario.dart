@@ -32,11 +32,12 @@ class _CalendarioState extends State<Calendario> {
       child: SfCalendar(
         view: CalendarView.week,
         // selectionDecoration: BoxDecoration(
-        //   color: Colors.transparent,
+        //   color: Colors.green,
         //   border: Border.all(color: Colors.red, width: 2),
         //   borderRadius: const BorderRadius.all(Radius.circular(4)),
         //   shape: BoxShape.rectangle,
         // ),
+
         // firstDayOfWeek: 1,
         dataSource: MeetingDataSource(getAppointments()),
       ),
@@ -45,12 +46,6 @@ class _CalendarioState extends State<Calendario> {
 }
 
 List<Appointment> getAppointments() {
-  var _diaInicio = 1;
-  var _mesInicio = 12;
-  var _anoInicio = 2021;
-  var _diasMes = 8;
-  var _horaInicio = 08;
-
   return _addDias();
 
   // List<Appointment> meetings = <Appointment>[];
@@ -83,23 +78,21 @@ _addDias() {
   final DateTime startTime =
       DateTime(today.year, today.month, today.day, 00, 0, 0);
   final DateTime endTime = startTime.add(const Duration(hours: 2));
-  setState() {
-    var _diaInicio = 1;
-    var _mesInicio = 12;
-    var _anoInicio = 2021;
-    var _diasMes = 8;
-    var _horaInicio = 08;
 
-    meetings.add(Appointment(
-        startTime:
-            DateTime(_anoInicio, _mesInicio, _diaInicio, _horaInicio, 00),
-        endTime:
-            DateTime(_anoInicio, _mesInicio, _diaInicio, _horaInicio + 1, 00),
-        subject: 'Grupo A',
-        color: const Color(0xFF44BC9C),
-        recurrenceRule: 'FREQ=DAILY;COUNT=${_diasMes};INTERVAL=4;BYDAY=SU,SA',
-        isAllDay: false));
-  }
+  var _diaInicio = 1;
+  var _mesInicio = 12;
+  var _anoInicio = 2021;
+  var _diasMes = 8;
+  var _horaInicio = 08;
+
+  meetings.add(Appointment(
+      startTime: DateTime(_anoInicio, _mesInicio, _diaInicio, _horaInicio, 00),
+      endTime:
+          DateTime(_anoInicio, _mesInicio, _diaInicio, _horaInicio + 1, 00),
+      subject: 'Grupo A',
+      color: const Color(0xFF44BC9C),
+      recurrenceRule: 'FREQ=DAILY;COUNT=${_diasMes};INTERVAL=4;BYDAY=SU,SA',
+      isAllDay: false));
 
   return meetings;
 }

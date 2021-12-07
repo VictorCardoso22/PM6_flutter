@@ -16,6 +16,8 @@ class Escala extends StatefulWidget {
 
 class _EscalaState extends State<Escala> {
   final DateTime hoje = DateTime.now();
+  var _visibilidade = false;
+  late Widget _icone = Icon(Icons.arrow_circle_down);
   // final DateTime mes = hoje.day;
   @override
   Widget build(BuildContext context) {
@@ -46,13 +48,14 @@ class _EscalaState extends State<Escala> {
                         ),
                       ),
                       Container(
-                        padding: EdgeInsets.all(16),
+                        padding: EdgeInsets.all(26),
+                        margin: EdgeInsets.only(bottom: 10),
                         child: Column(
                           children: [
                             Container(
                               width: constraint.maxWidth,
-                              height: 50,
-                              padding: EdgeInsets.all(16),
+                              // height: 50,
+                              padding: EdgeInsets.all(10),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.all(
                                   Radius.circular(5),
@@ -68,10 +71,55 @@ class _EscalaState extends State<Escala> {
                                 ],
                               ),
                               alignment: Alignment.center,
-                              child: Text(hoje.month.toString(),
-                                  style: kTitleTextStyle),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                // mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Expanded(
+                                    flex: 95,
+                                    child: Container(
+                                      child: Text(
+                                        "Dezembro",
+                                        style: kTitleTextStyle,
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    flex: 5,
+                                    child: Container(
+                                      child: IconButton(
+                                        iconSize: 25,
+                                        onPressed: () {
+                                          if (_visibilidade == true) {
+                                            setState(() {
+                                              _visibilidade = false;
+                                              _icone =
+                                                  Icon(Icons.arrow_circle_down);
+                                            });
+                                          } else {
+                                            setState(() {
+                                              _visibilidade = true;
+                                              _icone =
+                                                  Icon(Icons.arrow_circle_up);
+                                            });
+                                          }
+                                        },
+                                        alignment: Alignment.centerLeft,
+                                        icon: _icone,
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
-                            Calendario(),
+                            Visibility(
+                                visible: _visibilidade,
+                                child: Container(
+                                    margin: EdgeInsets.only(top: 20),
+                                    child: Calendario())),
                           ],
                         ),
                       ),
@@ -79,7 +127,7 @@ class _EscalaState extends State<Escala> {
                   ),
                   // botões de ação
                   Container(
-                    padding: EdgeInsets.all(20),
+                    padding: EdgeInsets.all(26),
                     child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
