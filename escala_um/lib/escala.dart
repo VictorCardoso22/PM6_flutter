@@ -3,6 +3,7 @@
 import 'package:escala_um/calendario.dart';
 import 'package:escala_um/constants.dart';
 import 'package:escala_um/escala_m.dart';
+import 'package:escala_um/escala_t.dart';
 import 'package:escala_um/escala_web.dart';
 import 'package:escala_um/form_guarnicao.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,16 @@ class Escala extends StatefulWidget {
 class _EscalaState extends State<Escala> {
   @override
   Widget build(BuildContext context) {
+    var width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    Widget _telaEscala;
+    if (width <= 600) {
+      _telaEscala = EscalaM();
+    } else if (width >= 601 && width <= 959) {
+      _telaEscala = EscalaT();
+    } else {
+      _telaEscala = EscalaWeb();
+    }
     return Scaffold(
       appBar: AppBar(
         title: Row(
@@ -30,8 +41,6 @@ class _EscalaState extends State<Escala> {
       ),
       body: SafeArea(
         child: LayoutBuilder(builder: (context, constraint) {
-          var larguratela = constraint.maxWidth;
-
           return SingleChildScrollView(
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -107,7 +116,9 @@ class _EscalaState extends State<Escala> {
                     ),
                   ),
                   Container(
-                    child: larguratela <= 600 ? EscalaM() : EscalaWeb(),
+                    margin: EdgeInsets.only(top: 30),
+                    color: Colors.blueAccent,
+                    child: _telaEscala,
                   )
                 ]),
           );

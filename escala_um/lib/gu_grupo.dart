@@ -33,8 +33,8 @@ class GuGrupo extends StatelessWidget {
           ),
         ],
       ),
-      margin: EdgeInsets.all(10),
-      width: larguraTela <= 600 ? 380 : 250,
+      // margin: EdgeInsets.all(10),
+      width: larguraTela <= 600 ? 350 : 300,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
