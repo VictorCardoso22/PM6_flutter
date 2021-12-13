@@ -14,12 +14,14 @@ class Menu extends StatelessWidget {
         title: const Text("Escala Eletronica"),
         backgroundColor: const Color(0xff222222),
       ),
-      body: SafeArea(child: SidebarPage()),
+      body: const SafeArea(child: SidebarPage()),
     );
   }
 }
 
 class SidebarPage extends StatefulWidget {
+  const SidebarPage({Key? key}) : super(key: key);
+
   @override
   _SidebarPageState createState() => _SidebarPageState();
 }
@@ -55,12 +57,7 @@ class _SidebarPageState extends State<SidebarPage> {
           setState(() {
             _headline = const Home();
           });
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute(builder: (context) => Home2()),
-          // );
         },
-        // isSelected: true,
       ),
     ];
   }
@@ -95,12 +92,6 @@ class _SidebarPageState extends State<SidebarPage> {
             spreadRadius: 2,
             offset: Offset(3, 0),
           ),
-          // BoxShadow(
-          //   color:  Color(0xff333333),
-          //   blurRadius: 50,
-          //   spreadRadius: 0.01,
-          //   offset: Offset(3, 3),
-          // ),
         ],
       ),
     );
@@ -118,14 +109,3 @@ class _SidebarPageState extends State<SidebarPage> {
     );
   }
 }
-
-
-//  child: Transform.rotate(
-//           angle: math.pi / 2,
-//           child: Transform.translate(
-//             offset: Offset(-size.height * 0.3, -size.width * 0.23),
-//             child: Container(
-//               child: _headline,
-//             ),
-//           ),
-//         ),

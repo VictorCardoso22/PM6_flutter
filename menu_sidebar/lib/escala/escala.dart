@@ -4,6 +4,7 @@ import 'package:menu_sidebar/escala/constants.dart';
 import 'package:menu_sidebar/escala/escala_m.dart';
 import 'package:menu_sidebar/escala/escala_t.dart';
 import 'package:menu_sidebar/escala/escala_web.dart';
+import 'package:menu_sidebar/escala/escala_web_m.dart';
 import 'package:menu_sidebar/escala/form_guarnicao.dart';
 
 class Escala extends StatefulWidget {
@@ -19,12 +20,13 @@ class _EscalaState extends State<Escala> {
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
     Widget _telaEscala;
-    if (width <= 600) {
+    if (width <= 653) {
       _telaEscala = const EscalaM();
-    } else if (width >= 601 && width <= 959) {
+    } else if (width > 653 && width < 959) {
       _telaEscala = const EscalaT();
+    } else if (width >= 959 && width <= 1200) {
+      _telaEscala = const EscalaWebM();
     } else {
       _telaEscala = const EscalaWeb();
     }
@@ -38,13 +40,11 @@ class _EscalaState extends State<Escala> {
               Column(
                 children: [
                   Container(
-                    // padding: const EdgeInsets.all(16),
                     margin: const EdgeInsets.only(bottom: 10),
                     child: Column(
                       children: [
                         Container(
                           width: width,
-                          // height: 50,
                           padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
                             borderRadius: const BorderRadius.all(
@@ -64,16 +64,13 @@ class _EscalaState extends State<Escala> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.center,
-                            // mainAxisSize: MainAxisSize.max,
                             children: [
-                              Expanded(
+                              const Expanded(
                                 flex: 92,
-                                child: Container(
-                                  child: const Text(
-                                    "Dezembro",
-                                    style: kTitleTextStyle,
-                                    textAlign: TextAlign.center,
-                                  ),
+                                child: Text(
+                                  "Dezembro",
+                                  style: kTitleTextStyle,
+                                  textAlign: TextAlign.center,
                                 ),
                               ),
                               Expanded(

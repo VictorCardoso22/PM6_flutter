@@ -3,14 +3,14 @@
 import 'package:flutter/material.dart';
 import 'package:menu_sidebar/escala/gu_grupo.dart';
 
-class EscalaWeb extends StatefulWidget {
-  const EscalaWeb({Key? key}) : super(key: key);
+class EscalaWebM extends StatefulWidget {
+  const EscalaWebM({Key? key}) : super(key: key);
 
   @override
-  _EscalaWebState createState() => _EscalaWebState();
+  _EscalaWebMState createState() => _EscalaWebMState();
 }
 
-class _EscalaWebState extends State<EscalaWeb> {
+class _EscalaWebMState extends State<EscalaWebM> {
   final List<Widget> _grupos = [
     GuGrupo(
         "A", "componente_1", "componente_2", "componente_3", "componente_4"),
@@ -36,7 +36,7 @@ class _EscalaWebState extends State<EscalaWeb> {
     return SizedBox(
         height: height,
         child: GridView.count(
-          crossAxisCount: 4,
+          crossAxisCount: 3,
           children: List.generate(_grupos.length, (index) {
             return Container(
               margin: EdgeInsets.only(bottom: 10),
