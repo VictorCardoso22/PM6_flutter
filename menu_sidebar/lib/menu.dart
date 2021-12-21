@@ -37,7 +37,9 @@ class SidebarPage extends StatefulWidget {
 class _SidebarPageState extends State<SidebarPage> {
   late List<CollapsibleItem> _items;
   late Widget _headline;
-  final AssetImage _avatarImg = const AssetImage('assets/user.png');
+  final AssetImage _avatarImg = AssetImage(
+    'assets/PMAL.jpg',
+  );
 
   @override
   void initState() {
@@ -78,18 +80,18 @@ class _SidebarPageState extends State<SidebarPage> {
         isCollapsed: true,
         items: _items,
         avatarImg: _avatarImg,
-        title: 'Nome',
-        onTitleTap: () {
-          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-              content: Text('Yay! Flutter Collapsible Sidebar!')));
-        },
+        title: 'Sd CARDOSO',
+        // onTitleTap: () {
+        //   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        //       content: Text('Yay! Flutter Collapsible Sidebar!')));
+        // },
         body: _body(size, context),
         backgroundColor: const Color(0Xff111111),
         selectedTextColor: const Color(0xff999999),
-        textStyle: const TextStyle(fontSize: 15, fontStyle: FontStyle.italic),
+        textStyle: const TextStyle(fontSize: 15, fontStyle: FontStyle.normal),
         titleStyle: const TextStyle(
-            fontSize: 20,
-            fontStyle: FontStyle.italic,
+            fontSize: 18,
+            fontStyle: FontStyle.normal,
             fontWeight: FontWeight.bold),
         toggleTitleStyle:
             const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),

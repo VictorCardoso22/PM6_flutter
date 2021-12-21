@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class WebAppBar extends StatelessWidget {
@@ -8,8 +7,10 @@ class WebAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppBar(
       title: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: const [
-          Text("PELOPES"),
+          Text("RP 01"),
           Text("24h - 72h",
               style: TextStyle(
                 fontSize: 14.0,
@@ -20,14 +21,28 @@ class WebAppBar extends StatelessWidget {
       ),
       actions: [
         const Padding(
-          padding: EdgeInsets.only(top: 20.0),
-          child: Text("Bem Vindo, Sd CARDOSO"),
+          padding: EdgeInsets.only(top: 21.0, right: 5, left: 5),
+          child: Text("Bem-vindo, Sd CARDOSO"),
         ),
-        IconButton(onPressed: () {}, icon: const Icon(Icons.add_alert_rounded)),
-        IconButton(
-            onPressed: () {}, icon: const Icon(Icons.mail_outline_rounded)),
-        IconButton(onPressed: () {}, icon: const Icon(Icons.home_rounded)),
-        IconButton(onPressed: () {}, icon: const Icon(Icons.close_rounded))
+        Container(
+            padding: const EdgeInsets.only(right: 4, left: 4),
+            child: IconButton(
+                onPressed: () {}, icon: const Icon(Icons.add_alert_rounded))),
+        Padding(
+          padding: const EdgeInsets.only(right: 4, left: 4),
+          child: IconButton(
+              onPressed: () {}, icon: const Icon(Icons.mail_outline_rounded)),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(right: 4, left: 4),
+          child: IconButton(
+              onPressed: () {}, icon: const Icon(Icons.home_rounded)),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(right: 4, left: 4),
+          child: IconButton(
+              onPressed: () {}, icon: const Icon(Icons.close_rounded)),
+        )
       ],
       backgroundColor: const Color(0xff111111),
       // centerTitle: true,
