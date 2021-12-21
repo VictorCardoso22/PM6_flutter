@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:menu_sidebar/escala/calendario.dart';
 import 'package:menu_sidebar/escala/constants.dart';
-import 'package:menu_sidebar/escala/escala_m.dart';
-import 'package:menu_sidebar/escala/escala_t.dart';
-import 'package:menu_sidebar/escala/escala_web.dart';
-import 'package:menu_sidebar/escala/escala_web_m.dart';
+import 'package:menu_sidebar/escala/escala_responsiva.dart';
 import 'package:menu_sidebar/escala/form_guarnicao.dart';
 
 class Escala extends StatefulWidget {
@@ -20,16 +17,6 @@ class _EscalaState extends State<Escala> {
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
-    Widget _telaEscala;
-    if (width <= 653) {
-      _telaEscala = const EscalaM();
-    } else if (width > 653 && width < 959) {
-      _telaEscala = const EscalaT();
-    } else if (width >= 959 && width <= 1200) {
-      _telaEscala = const EscalaWebM();
-    } else {
-      _telaEscala = const EscalaWeb();
-    }
     return SafeArea(
       child: SingleChildScrollView(
         child: Column(
@@ -40,7 +27,7 @@ class _EscalaState extends State<Escala> {
               Column(
                 children: [
                   Container(
-                    margin: const EdgeInsets.only(bottom: 10),
+                    margin: const EdgeInsets.only(top: 16, bottom: 10),
                     child: Column(
                       children: [
                         Container(
@@ -160,7 +147,7 @@ class _EscalaState extends State<Escala> {
               const SizedBox(
                 height: 30,
               ),
-              _telaEscala
+              EscalaResponsiva(),
             ]),
       ),
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:collapsible_sidebar/collapsible_sidebar.dart';
+import 'package:menu_sidebar/appbar/web_appbar.dart';
 import 'package:menu_sidebar/escala/escala.dart';
 
 import 'package:menu_sidebar/home.dart';
@@ -9,13 +10,20 @@ class Menu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Escala Eletronica"),
-        backgroundColor: const Color(0xff222222),
-      ),
-      body: const SafeArea(child: SidebarPage()),
-    );
+    return LayoutBuilder(builder: (context, constraint) {
+      var largura = constraint.maxWidth;
+      var alturaBarra = AppBar().preferredSize.height;
+
+      return Scaffold(
+        appBar: largura < 600
+            ? AppBar()
+            : PreferredSize(
+                child: WebAppBar(),
+                preferredSize: Size(largura, alturaBarra),
+              ),
+        body: const SafeArea(child: SidebarPage()),
+      );
+    });
   }
 }
 
@@ -51,8 +59,8 @@ class _SidebarPageState extends State<SidebarPage> {
         isSelected: true,
       ),
       CollapsibleItem(
-        text: 'Search',
-        icon: Icons.search,
+        text: 'Teste',
+        icon: Icons.texture_sharp,
         onPressed: () {
           setState(() {
             _headline = const Home();
@@ -76,7 +84,7 @@ class _SidebarPageState extends State<SidebarPage> {
               content: Text('Yay! Flutter Collapsible Sidebar!')));
         },
         body: _body(size, context),
-        backgroundColor: Colors.black,
+        backgroundColor: const Color(0Xff111111),
         selectedTextColor: const Color(0xff999999),
         textStyle: const TextStyle(fontSize: 15, fontStyle: FontStyle.italic),
         titleStyle: const TextStyle(
@@ -87,7 +95,7 @@ class _SidebarPageState extends State<SidebarPage> {
             const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         sidebarBoxShadow: const [
           BoxShadow(
-            color: Color(0xff333333),
+            color: Color(0xff666666),
             blurRadius: 5,
             spreadRadius: 2,
             offset: Offset(3, 0),
@@ -103,7 +111,10 @@ class _SidebarPageState extends State<SidebarPage> {
       width: double.infinity,
       color: Colors.blueGrey[50],
       child: Container(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.only(
+          left: 16,
+          right: 16,
+        ),
         child: _headline,
       ),
     );

@@ -25,7 +25,7 @@ class _CalendarioState extends State<Calendario> {
             color: kShadowColor,
             spreadRadius: 2,
             blurRadius: 4,
-            offset: Offset(0, 3),
+            offset: const Offset(0, 3),
           ),
         ],
       ),
@@ -91,7 +91,31 @@ _addDias() {
           DateTime(_anoInicio, _mesInicio, _diaInicio, _horaInicio + 1, 00),
       subject: 'Grupo A',
       color: const Color(0xFF44BC9C),
-      recurrenceRule: 'FREQ=DAILY;COUNT=${_diasMes};INTERVAL=4;BYDAY=SU,SA',
+      recurrenceRule: 'FREQ=DAILY;COUNT=$_diasMes;INTERVAL=4;BYDAY=SU,SA',
+      isAllDay: false));
+
+  meetings.add(Appointment(
+      startTime: DateTime(2021, 12, 02, 08, 00),
+      endTime: DateTime(2021, 12, 02, 09, 00),
+      subject: 'Grupo B',
+      color: const Color(0xFF84C8B6),
+      recurrenceRule: 'FREQ=DAILY;COUNT=8;INTERVAL=4;BYDAY=SU,SA',
+      isAllDay: false));
+
+  meetings.add(Appointment(
+      startTime: DateTime(2021, 12, 03, 08, 00),
+      endTime: DateTime(2021, 12, 03, 09, 00),
+      subject: 'Grupo C',
+      color: const Color(0xFF80d1b0),
+      recurrenceRule: 'FREQ=DAILY;COUNT=8;INTERVAL=4;BYDAY=SU,SA',
+      isAllDay: false));
+
+  meetings.add(Appointment(
+      startTime: DateTime(2021, 12, 04, 08, 00),
+      endTime: DateTime(2021, 12, 04, 09, 00),
+      subject: 'Grupo D',
+      color: const Color(0xFF809999),
+      recurrenceRule: 'FREQ=DAILY;COUNT=8;INTERVAL=4;BYDAY=SU,SA',
       isAllDay: false));
 
   return meetings;
