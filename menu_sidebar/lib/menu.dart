@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:collapsible_sidebar/collapsible_sidebar.dart';
+import 'package:menu_sidebar/appbar/mobile_appbar.dart';
 import 'package:menu_sidebar/appbar/web_appbar.dart';
 import 'package:menu_sidebar/escala/escala.dart';
 
@@ -16,9 +17,12 @@ class Menu extends StatelessWidget {
 
       return Scaffold(
         appBar: largura < 600
-            ? AppBar()
+            ? PreferredSize(
+                child: const MobileAppBar(),
+                preferredSize: Size(largura, alturaBarra),
+              )
             : PreferredSize(
-                child: WebAppBar(),
+                child: const WebAppBar(),
                 preferredSize: Size(largura, alturaBarra),
               ),
         body: const SafeArea(child: SidebarPage()),

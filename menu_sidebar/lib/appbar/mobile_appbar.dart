@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
-class WebAppBar extends StatelessWidget {
-  const WebAppBar({Key? key}) : super(key: key);
+class MobileAppBar extends StatefulWidget {
+  const MobileAppBar({Key? key}) : super(key: key);
 
+  @override
+  _MobileAppBarState createState() => _MobileAppBarState();
+}
+
+class _MobileAppBarState extends State<MobileAppBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -27,22 +32,7 @@ class WebAppBar extends StatelessWidget {
         Padding(
             padding: const EdgeInsets.only(right: 4, left: 4),
             child: IconButton(
-                onPressed: () {}, icon: const Icon(Icons.add_alert_rounded))),
-        Padding(
-          padding: const EdgeInsets.only(right: 4, left: 4),
-          child: IconButton(
-              onPressed: () {}, icon: const Icon(Icons.mail_outline_rounded)),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(right: 4, left: 4),
-          child: IconButton(
-              onPressed: () {}, icon: const Icon(Icons.home_rounded)),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(right: 4, left: 4),
-          child: IconButton(
-              onPressed: () {}, icon: const Icon(Icons.close_rounded)),
-        )
+                onPressed: () {}, icon: const Icon(Icons.apps_rounded))),
       ],
       backgroundColor: const Color(0xff111111),
       // centerTitle: true,
